@@ -91,5 +91,15 @@ end_time = int(15)*60 + int(35)
 current_time = now.hour*60 + now.minute
 while True:
     if start_time <= current_time and end_time >= current_time:
-        saveDataInMongo(index='NIFTY')
-        saveDataInMongo(index='BANKNIFTY')
+        try:
+            saveDataInMongo(index='NIFTY')
+        except:
+            pass
+        try :
+            saveDataInMongo(index='BANKNIFTY')
+        except:
+            pass
+        time.sleep(180)
+    else:
+        time.sleep(1800)
+        
